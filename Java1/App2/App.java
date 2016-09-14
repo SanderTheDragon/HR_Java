@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class App
 {
@@ -26,6 +25,9 @@ public class App
         }
         else
         {
+            if (args.length > 4)
+                System.out.println("Meer dan 4 argumenten gegeven, alleen de eerste 4 worden gebruikt");
+        
             x1S = args[0];
             y1S = args[1];
             x2S = args[2];
@@ -45,7 +47,7 @@ public class App
             return;
         }
         
-        System.out.println("A(" + x1 + "," + y2 + ")  B(" + x2 + "," + y2 + ")");
+        System.out.println("A(" + x1 + "," + y1 + ")  B(" + x2 + "," + y2 + ")");
         
         int dX = x2 - x1;
         int dY = y2 - y1;
