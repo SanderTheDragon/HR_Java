@@ -17,11 +17,11 @@ public class App
             }
         }
         
-        for (int t = 0; t < amount; )
+        for (int count = 0; count < amount; )
         {
-            for (int d = 2; d <= Math.sqrt(num); d++)
+            for (int divider = 2; divider <= Math.sqrt(num); divider++)
             {
-                if (num % d == 0)
+                if (num % divider == 0)
                 {
                     prime = false;
                     break;
@@ -41,7 +41,7 @@ public class App
                     loc = 0;
                 }
                 
-                t++;
+                count++;
             }
             
             prime = true;
