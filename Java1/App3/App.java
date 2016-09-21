@@ -3,7 +3,6 @@ public class App
     public static void main(String[] args)
     {
         int amount = 200, num = 2, loc = 0;
-        boolean prime = true;
         
         if (args.length > 0)
         {
@@ -35,7 +34,6 @@ public class App
                 count++;
             }
             
-            prime = true;
             num++;
         }
     }
