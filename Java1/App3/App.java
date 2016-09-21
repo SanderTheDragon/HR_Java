@@ -19,16 +19,7 @@ public class App
         
         for (int count = 0; count < amount; )
         {
-            for (int divider = 2; divider <= Math.sqrt(num); divider++)
-            {
-                if (num % divider == 0)
-                {
-                    prime = false;
-                    break;
-                }
-            }
-            
-            if (prime)
+            if (isPrime(num))
             {
                 if (loc + 1 < 10)
                 {
@@ -47,5 +38,18 @@ public class App
             prime = true;
             num++;
         }
+    }
+    
+    private static boolean isPrime(int num)
+    {
+        for (int divider = 2; divider <= Math.sqrt(num); divider++)
+        {
+            if (num % divider == 0)
+            {
+                return false;
+            }
+        }
+        
+        return true;
     }
 }
