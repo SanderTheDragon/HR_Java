@@ -24,14 +24,11 @@ public class App
         
         primes[1] = false;
         
-        for (int i = 2; (int)Math.pow(i, 2) <= amount; i++)
+        for (int i = 2; i <= Math.sqrt(amount); i++)
         {
-            if (primes[i]) 
+            for (int j = (int)Math.pow(i,2); j <= amount; j += i)
             {
-                for (int j = i; i * j <= amount; j++)
-                {
-                    primes[i * j] = false;
-                }
+                primes[j] = false;
             }
         }
         
