@@ -2,34 +2,34 @@ public class App
 {
 	public static void main(String[] args)
 	{
-		Auto[] autos;
+		Car[] cars;
 		
-		autos = createCarArray();
+		cars = createCarArray();
 		
-		Auto fastest = findFastest(autos);
+		Car fastest = findFastest(cars);
 		
 		System.out.println("\n\n\nFastest car: ");
 		fastest.print();
 	}
 	
-	public static Auto findFastest(Auto[] autos)
+	public static Car findFastest(Car[] cars)
 	{
-		Auto fastest = autos[0];
+		Car fastest = cars[0];
 		
-		for (int i = 1; i < autos.length; i++)
+		for (int i = 1; i < cars.length; i++)
 		{
-			if (autos[i].getMaxSpeed() > fastest.getMaxSpeed())
-				fastest = autos[i];
+			if (cars[i].getMaxSpeed() > fastest.getMaxSpeed())
+				fastest = cars[i];
 		}
 		
 		return fastest;
 	}
 	
-	public static Auto[] createCarArray()
+	public static Car[] createCarArray()
 	{
-		Auto[] autos = new Auto[5];
+		Car[] cars = new Car[5];
 		
-		Auto a = new Auto();
+		Car a = new Car();
 		a.setLicensePlate("FX-67-GD");
 		a.setDoorCount(5);
 		a.setColor("Black");
@@ -38,11 +38,11 @@ public class App
 		a.setMaxSpeed(210);
 		a.setFuelType("Euro 98");
 		a.setBuildYear(2001);
-		autos[0] = a;
+		cars[0] = a;
 		System.out.println("Created car: ");
 		a.print();
 		
-		Auto b = new Auto();
+		Car b = new Car();
 		b.setLicensePlate("CV-PF-36");
 		b.setDoorCount(5);
 		b.setColor("White");
@@ -51,11 +51,11 @@ public class App
 		b.setMaxSpeed(180);
 		b.setFuelType("Diesel");
 		b.setBuildYear(1998);
-		autos[1] = b;
+		cars[1] = b;
 		System.out.println("\nCreated car: ");
 		b.print();
 		
-		Auto c = new Auto();
+		Car c = new Car();
 		c.setLicensePlate("WH-49-DD");
 		c.setDoorCount(5);
 		c.setColor("Red");
@@ -64,11 +64,11 @@ public class App
 		c.setMaxSpeed(200);
 		c.setFuelType("Gas");
 		c.setBuildYear(1995);
-		autos[2] = c;
+		cars[2] = c;
 		System.out.println("\nCreated car: ");
 		c.print();
 		
-		Auto d = new Auto();
+		Car d = new Car();
 		d.setLicensePlate("33-PF-WF");
 		d.setDoorCount(3);
 		d.setColor("Blue");
@@ -77,11 +77,11 @@ public class App
 		d.setMaxSpeed(230);
 		d.setFuelType("Euro 95");
 		d.setBuildYear(2004);
-		autos[3] = d;
+		cars[3] = d;
 		System.out.println("\nCreated car: ");
 		d.print();
 		
-		Auto e = new Auto();
+		Car e = new Car();
 		e.setLicensePlate("LK-VM-38");
 		e.setDoorCount(5);
 		e.setColor("Red");
@@ -90,10 +90,10 @@ public class App
 		e.setMaxSpeed(200);
 		e.setFuelType("Euro 95");
 		e.setBuildYear(2000);
-		autos[4] = e;
+		cars[4] = e;
 		System.out.println("\nCreated car: ");
 		e.print();
 		
-		return autos;
+		return cars;
 	}
 }

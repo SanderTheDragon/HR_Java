@@ -1,4 +1,4 @@
-public class Auto
+public class Car
 {
 	private String licensePlate;
 	private int doorCount;
