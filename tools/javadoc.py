@@ -48,11 +48,12 @@ for line in file_:
 				params = []
 				
 				if not "()" in line:
-					params = line.split(", ");
+					params = line.split(", ")
 					params[0] = params[0][params[0].find("(") + 1:]
 					params[-1] = params[-1][:params[-1].find(")")]
 				
 				if parts[1][0:parts[1].find("(")] == className:
+					lines.append("\t * Constructor for \'" + className + "\'")
 					lines.append("\t * ...")
 					
 					if params:
@@ -61,8 +62,18 @@ for line in file_:
 						for param in params:
 							lines.append("\t * @param " + "{0: <10}".format(param.split(" ")[1]) + " ...")
 				else:
+					static = False
+					
 					functionReturn = parts[1]
 					functionName = parts[2][0:parts[2].find("(")]
+					
+					if functionReturn == "static":
+						static = True
+						functionReturn = parts[2]
+						functionName = parts[3][0:parts[3].find("(")]
+					
+					if functionReturn == "void" and functionName == "main" and static == True:
+						lines.append("\t * Main method for \'" + className + "\'")
 					
 					lines.append("\t * ...")
 					
