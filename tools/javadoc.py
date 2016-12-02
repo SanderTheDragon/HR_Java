@@ -18,7 +18,8 @@ for line in file_:
 	
 	line = line.strip()
 	
-	if line.startswith("public") or line.startswith("private") and not "=" in line:
+	if (line.startswith("public") or line.startswith("private")) and not "=" in line:
+		print line
 		if not "(" in line and not ")" in line:
 			if className is "":
 				post = lines[-1]
@@ -81,6 +82,7 @@ for line in file_:
 						lines.append("\t * ")
 					
 						for param in params:
+							print param
 							lines.append("\t * @param " + "{0: <10}".format(param.split(" ")[1]) + " ...")
 					
 					if not functionReturn == "void":
