@@ -1,6 +1,8 @@
 #!/usr/bin/python
 #coding=utf8
 
+# Copyright © SanderTheDragon (Sander Wolswijk)
+
 import sys
 
 for arg in sys.argv:
