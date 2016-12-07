@@ -35,7 +35,7 @@ for arg in sys.argv:
 					lines.append(" */")
 					lines.append(post)
 			else:
-				if "set" not in line and "get" not in line:
+				if not ("set" in line and " = " in line) and not ("get" in line and "return" in line):
 					post = lines[-1]
 					del lines[-1]
 					
