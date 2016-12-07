@@ -62,7 +62,7 @@ for arg in sys.argv:
 							lines.append("\t * ")
 						
 							for param in params:
-								lines.append("\t * @param " + "{0: <{l}}".format(param.split(" ")[1], l=str(len(max(params, key=len)))) + " ... (as " + param.split(" ")[0] + ")")
+								lines.append("\t * @param " + "{0: <{l}}".format(param.split(" ")[1], l=str(len(max(param.split(" ")[0], key=len)))) + " ... (as " + param.split(" ")[0] + ")")
 					else:
 						static = False
 						
@@ -84,11 +84,11 @@ for arg in sys.argv:
 							lines.append("\t * ")
 						
 							for param in params:
-								lines.append("\t * @param " + "{0: <{l}}".format(param.split(" ")[1], l=str(len(max(params, key=len)) + 1)) + " ... (as " + param.split(" ")[0] + ")")
+								lines.append("\t * @param " + "{0: <{l}}".format(param.split(" ")[1], l=str(len(max(param.split(" ")[0], key=len)) + 1)) + " ... (as " + param.split(" ")[0] + ")")
 						
 						if not functionReturn == "void":
 							lines.append("\t * ")
-							lines.append("\t * @return " + "{0: <{l}}".format("", l=str(len(max(params, key=len)))) + " ... (as " + functionReturn + ")")
+							lines.append("\t * @return " + "{0: <{l}}".format("", l=str(len(max(param.split(" ")[0], key=len)))) + " ... (as " + functionReturn + ")")
 					
 					lines.append("\t */")
 					lines.append(post)
