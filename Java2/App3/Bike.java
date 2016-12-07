@@ -1,6 +1,16 @@
+/**
+ * @author  Sander Wolswijk <0926815@hr.nl>
+ * @version 1.0
+ */
 public class Bike extends Vehicle
 {
+	/**
+	 * Declares 'lights' as 'private int'
+	 */
 	private int lights;
+	/**
+	 * Declares 'lightPowerSource' as 'private String'
+	 */
 	private String lightPowerSource;
 	
 	public int getLights() { return lights; }
@@ -9,6 +19,18 @@ public class Bike extends Vehicle
 	public String getLightpowersource() { return lightPowerSource; }
 	public void setLightpowersource(String newLightpowersource) { lightPowerSource = newLightpowersource; }
 	
+	/**
+	 * Constructor for 'Bike'
+	 <p>
+	 * Initializes all variables
+	 * 
+	 * @param newName              Name of the vehicle (as String)
+	 * @param newMaxSpeed          Maximum speed of vehicle in km/h (as int)
+	 * @param newLength            Length of vehicle in m (as double)
+	 * @param newMass              Mass of vehicle in kg (as int)
+	 * @param newlights            Amount of lights on bike (as int)
+	 * @param newLightpowersource  Power source for lights (as String)
+	 */
 	public Bike(String newName, int newMaxSpeed, double newLength, int newMass, int newlights, String newLightpowersource)
 	{
 		super(newName, newMaxSpeed, newLength, newMass);
@@ -17,6 +39,9 @@ public class Bike extends Vehicle
 		setLightpowersource(newLightpowersource);
 	}
 	
+	/**
+	 * Prints value of all the variables
+	 */
 	public void print()
 	{
 		System.out.println("Name: " + getName() + ":");

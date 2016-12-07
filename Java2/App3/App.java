@@ -1,5 +1,16 @@
+/**
+ * @author  Sander Wolswijk <0926815@hr.nl>
+ * @version 1.0
+ */
 public class App
 {
+	/**
+	 * Main method for 'App'
+	 <p>
+	 * Create vehicles and find the heaviest
+	 * 
+	 * @param args           Arguments (as String[])
+	 */
 	public static void main(String[] args)
 	{
 		Vehicle[] vehicles = new Vehicle[10];
@@ -20,6 +31,13 @@ public class App
 		heaviest.print();
 	}
 	
+	/**
+	 * Find the heaviest vehicle
+	 * 
+	 * @param vehicles            A list of vehicles (as Vehicle[])
+	 * 
+	 * @return                    The heaviest car (as Vehicle)
+	 */
 	public static Vehicle getHeaviestVehicle(Vehicle[] vehicles)
 	{
 		Vehicle heaviest = vehicles[0];
