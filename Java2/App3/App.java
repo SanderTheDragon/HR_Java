@@ -7,7 +7,7 @@ public class App
 	/**
 	 * Main method for 'App'
 	 <p>
-	 * Create vehicles and find the heaviest
+	 * Create vehicles and find the heaviest and lightest
 	 * 
 	 * @param args           Arguments (as String[])
 	 */
@@ -27,8 +27,10 @@ public class App
 		vehicles[9] = new RaceBike("RocketBike", 5000, 2.0, 100, 2, "Rocket Fuel", false, 100);
 		
 		Vehicle heaviest = getHeaviestVehicle(vehicles);
+		Vehivle lightest = getLightestVehicle(vehicles);
 		
 		heaviest.print();
+		lightest.print();
 	}
 	
 	/**
@@ -49,5 +51,25 @@ public class App
 		}
 		
 		return heaviest;
+	}
+	
+	/**
+	 * Find the lightest vehicle
+	 * 
+	 * @param vehicles            A list of vehicles (as Vehicle[])
+	 * 
+	 * @return                    The lightest car (as Vehicle)
+	 */
+	public static Vehicle getLightestVehicle(Vehicle[] vehicles)
+	{
+		Vehicle lightest = vehicles[0];
+		
+		for (int i = 1; i < vehicles.length; i++)
+		{
+			if (vehicles[i].getMass() < lightest.getMass())
+				lightest = vehicles[i];
+		}
+		
+		return lightest;
 	}
 }
