@@ -1,15 +1,15 @@
 public class Recorder
 {
-    public void simulate()
+    public void simulate(int num)
     {
         int crashedCount = 0, flap1Count = 0, flap2Count = 0, engine1Count = 0, engine2Count = 0, engine3Count = 0, engine4Count = 0, pilot1Count = 0, pilot2Count = 0, pilot3Count = 0;
         
         
-        for (int i = 0; i < 1000000; i++)
+        for (int i = 0; i < num; i++)
         {
             Airplane airplane = new Airplane(i);
             
-            if (i < 999999)
+            if (i < num - 1)
                 System.out.print(i + "\t\t (\t" + flap1Count + "\t" + flap2Count + "\t" + engine1Count + "\t" + engine2Count + "\t" + engine3Count + "\t" + engine4Count + "\t" + pilot1Count + "\t" + pilot2Count + "\t" + pilot3Count + "\t)" + "\r");
             else
                 System.out.print(new String(new char[128]).replace("\0", " ") + "\r");
@@ -21,7 +21,7 @@ public class Recorder
             catch (CrashException e)
             {
                 crashedCount++;
-                System.out.println("Flight " + i + " crashed! (" + e.cause() + ")" + new String(new char[64]).replace("\0", " "));
+                System.out.println("Flight " + i + " crashed! (" + e.cause() + ")" + new String(new char[128]).replace("\0", " "));
             }
             
             if (airplane.flap1Fail)

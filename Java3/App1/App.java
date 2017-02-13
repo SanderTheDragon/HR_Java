@@ -4,6 +4,17 @@ public class App
     {
         Recorder recorder = new Recorder();
         
-        recorder.simulate();
+        int num = 1000000;
+        
+        if (args.length > 0)
+        {
+            try
+            {
+                num = Integer.parseInt(args[0]);
+            }
+            catch (Exception e) { }
+        }
+        
+        recorder.simulate(num);
     }
 }
