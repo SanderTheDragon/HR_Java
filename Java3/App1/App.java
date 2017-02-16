@@ -17,4 +17,12 @@ public class App
         
         recorder.simulate(num);
     }
+    
+    public static boolean and(int bits, int bit)
+    {
+        if ((bits & (int)Math.pow(2, bit)) > 0)
+            return true;
+        
+        return false;
+    }
 }

@@ -4,15 +4,9 @@ public class Recorder
     {
         int crashedCount = 0, flap1Count = 0, flap2Count = 0, engine1Count = 0, engine2Count = 0, engine3Count = 0, engine4Count = 0, pilot1Count = 0, pilot2Count = 0, pilot3Count = 0;
         
-        
         for (int i = 0; i < num; i++)
         {
             Airplane airplane = new Airplane(i);
-            
-            if (i < num - 1)
-                System.out.print(i + "\t\t (\t" + flap1Count + "\t" + flap2Count + "\t" + engine1Count + "\t" + engine2Count + "\t" + engine3Count + "\t" + engine4Count + "\t" + pilot1Count + "\t" + pilot2Count + "\t" + pilot3Count + "\t)" + "\r");
-            else
-                System.out.print(new String(new char[128]).replace("\0", " ") + "\r");
             
             try
             {
@@ -21,34 +15,34 @@ public class Recorder
             catch (CrashException e)
             {
                 crashedCount++;
-                System.out.println("Flight " + i + " crashed! (" + e.cause() + ")" + new String(new char[128]).replace("\0", " "));
+                System.out.println("Flight " + i + " crashed! (" + e.getMessage() + ")" + new String(new char[128]).replace("\0", " "));
             }
             
-            if (airplane.flap1Fail)
+            if (App.and(airplane.getFlapFails(), 0))
                 flap1Count++;
-                
-            if (airplane.flap2Fail)
+            
+            if (App.and(airplane.getFlapFails(), 1))
                 flap2Count++;
-                
-            if (airplane.engine1Fail)
+            
+            if (App.and(airplane.getEngineFails(), 0))
                 engine1Count++;
-                
-            if (airplane.engine2Fail)
+            
+            if (App.and(airplane.getEngineFails(), 1))
                 engine2Count++;
-                
-            if (airplane.engine3Fail)
+            
+            if (App.and(airplane.getEngineFails(), 2))
                 engine3Count++;
-                
-            if (airplane.engine4Fail)
+            
+            if (App.and(airplane.getEngineFails(), 3))
                 engine4Count++;
-                
-            if (airplane.pilot1Fail)
+            
+            if (App.and(airplane.getPilotFails(), 0))
                 pilot1Count++;
-                
-            if (airplane.pilot2Fail)
+            
+            if (App.and(airplane.getPilotFails(), 1))
                 pilot2Count++;
-                
-            if (airplane.pilot3Fail)
+            
+            if (App.and(airplane.getPilotFails(), 2))
                 pilot3Count++;
         }
         

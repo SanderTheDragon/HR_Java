@@ -2,125 +2,91 @@ public class Airplane
 {
     int flightNum;
     
-    Flap flap1 = new Flap();
-    Flap flap2 = new Flap();
+    Flap[] flaps = new Flap[2];
+    Engine[] engines = new Engine[4];
+    Pilot[] pilots = new Pilot[3];
     
-    Engine engine1 = new Engine();
-    Engine engine2 = new Engine();
-    Engine engine3 = new Engine();
-    Engine engine4 = new Engine();
-    
-    Pilot pilot1 = new Pilot();
-    Pilot pilot2 = new Pilot();
-    Pilot pilot3 = new Pilot();
-    
-    boolean flap1Fail = false, flap2Fail = false, engine1Fail = false, engine2Fail = false, engine3Fail = false, engine4Fail = false, pilot1Fail = false, pilot2Fail = false, pilot3Fail = false;
+    int fFlaps = 0;
+    int fEngines = 0;
+    int fPilots = 0;
     
     public Airplane(int num)
     {
         flightNum = num;
+        
+        flaps[0] = new Flap();
+        flaps[1] = new Flap();
+        
+        engines[0] = new Engine();
+        engines[1] = new Engine();
+        engines[2] = new Engine();
+        engines[3] = new Engine();
+        
+        pilots[0] = new Pilot();
+        pilots[1] = new Pilot();
+        pilots[2] = new Pilot();
     }
     
     public void flight() throws CrashException
     {
-        //System.out.println("[" + flightNum + "]Plane has taken off");
-        
-        try
+        for (int f = 0; f < flaps.length; f++)
         {
-            flap1.calculate();
-        }
-        catch (FlapException fe1)
-        {
-            //System.out.println("[" + flightNum + "]Flap 1 has failed");
-            flap1Fail = true;
-        }
-        
-        try
-        {
-            flap2.calculate();
-        }
-        catch (FlapException fe2)
-        {
-            //System.out.println("[" + flightNum + "]Flap 2 has failed");
-            flap2Fail = true;
+            try
+            {
+                flaps[f].calculate();
+            }
+            catch (FlapException fEx)
+            {
+                fFlaps += Math.pow(2, f);
+            }
         }
         
-        try
+        for (int e = 0; e < engines.length; e++)
         {
-            engine1.calculate();
-        }
-        catch (EngineException ee1)
-        {
-            //System.out.println("[" + flightNum + "]Engine 1 has failed");
-            engine1Fail = true;
-        }
-        
-        try
-        {
-            engine2.calculate();
-        }
-        catch (EngineException ee2)
-        {
-            //System.out.println("[" + flightNum + "]Engine 2 has failed");
-            engine2Fail = true;
+            try
+            {
+                engines[e].calculate();
+            }
+            catch (EngineException eEx)
+            {
+                fEngines += Math.pow(2, e);
+            }
         }
         
-        try
+        for (int p = 0; p < pilots.length; p++)
         {
-            engine3.calculate();
-        }
-        catch (EngineException ee3)
-        {
-            //System.out.println("[" + flightNum + "]Engine 3 has failed");
-            engine3Fail = true;
-        }
-        
-        try
-        {
-            engine4.calculate();
-        }
-        catch (EngineException ee4)
-        {
-            //System.out.println("[" + flightNum + "]Engine 4 has failed");
-            engine4Fail = true;
+            try
+            {
+                pilots[p].calculate();
+            }
+            catch (PilotException pEx)
+            {
+                fPilots += Math.pow(2, p);
+            }
         }
         
-        try
-        {
-            pilot1.calculate();
-        }
-        catch (PilotException pe1)
-        {
-            //System.out.println("[" + flightNum + "]Pilot 1 has failed");
-            pilot1Fail = true;
-        }
+        if (App.and(fFlaps, 0) && App.and(fFlaps, 1))
+            throw new CrashException("Failure of flaps");
         
-        try
-        {
-            pilot2.calculate();
-        }
-        catch (PilotException pe2)
-        {
-            //System.out.println("[" + flightNum + "]Pilot 2 has failed");
-            pilot2Fail = true;
-        }
+        if (App.and(fPilots, 0) && App.and(fPilots, 1) && App.and(fPilots, 2))
+            throw new CrashException("Failure of pilots");
         
-        try
-        {
-            pilot3.calculate();
-        }
-        catch (PilotException pe3)
-        {
-            //System.out.println("[" + flightNum + "]Pilot 3 has failed");
-            pilot3Fail = true;
-        }
-        
-        if ((flap1Fail && flap2Fail) || (pilot1Fail && pilot2Fail && pilot3Fail) || ((engine1Fail || engine4Fail) && engine2Fail && engine3Fail))
-        {
-            //System.out.println("[" + flightNum + "]Plane has crashed");
-            throw new CrashException(flap1Fail, flap2Fail, engine1Fail, engine2Fail, engine3Fail, engine4Fail, pilot1Fail, pilot2Fail, pilot3Fail);
-        }
-        
-        //System.out.println("[" + flightNum + "]Plane landed safely");
+        if ((App.and(fEngines, 1) && App.and(fEngines, 2)) && (App.and(fEngines, 0) || App.and(fEngines, 3)))
+            throw new CrashException("Failure of engines");
+    }
+    
+    public int getFlapFails()
+    {
+        return fFlaps;
+    }
+    
+    public int getEngineFails()
+    {
+        return fEngines;
+    }
+    
+    public int getPilotFails()
+    {
+        return fPilots;
     }
 }

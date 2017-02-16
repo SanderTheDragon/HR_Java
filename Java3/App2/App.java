@@ -2,6 +2,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.time.format.ResolverStyle;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import javax.swing.JFrame;
@@ -34,7 +35,7 @@ public class App
         {
             public void mouseClicked(MouseEvent e)
             {
-                DateTimeFormatter dFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                DateTimeFormatter dFormat = DateTimeFormatter.ofPattern("dd-MM-uuuu");
                 DateTimeFormatter tFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
                 
                 bDay2Date.setText(ZonedDateTime.now().format(dFormat));
@@ -52,7 +53,7 @@ public class App
         {
             public void mouseClicked(MouseEvent e)
             {
-                DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-uuuu HH:mm:ss").withResolverStyle(ResolverStyle.STRICT);
                 
                 try
                 {
@@ -118,7 +119,7 @@ public class App
                     
                     result.setText(((Float)res).toString() + " " + calculateAs.getSelectedItem());
                 }
-                catch (DateTimeParseException ex)
+                catch (Exception ex)
                 {
                     result.setText("Invalid date");
                     

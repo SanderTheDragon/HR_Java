@@ -39,7 +39,7 @@ public class App
             {
                 while (true)
                 {
-                    System.out.print("");
+                    System.out.println("");
                     
                     if (running)
                         timeLabel.setText(toTimeString(System.currentTimeMillis() - startTime));
@@ -96,7 +96,7 @@ public class App
                 startTime = System.currentTimeMillis();
                 stopTime = System.currentTimeMillis();
                 
-                timeLabel.setText(toTimeString(System.currentTimeMillis() - startTime));
+                timeLabel.setText(toTimeString(0));
                 
                 laps.clear();
             }
