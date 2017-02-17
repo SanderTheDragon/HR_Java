@@ -39,10 +39,20 @@ public class App
             {
                 while (true)
                 {
-                    System.out.println("");
-                    
                     if (running)
+                    {
+                        timeLabel.show();
+                        
                         timeLabel.setText(toTimeString(System.currentTimeMillis() - startTime));
+                    }
+                    
+                    if (!running && stopTime != startTime)
+                    {
+                        if (System.currentTimeMillis() % 2000 < 1000)
+                            timeLabel.hide();
+                        else
+                            timeLabel.show();
+                    }
                 }
             }
         });
@@ -96,6 +106,7 @@ public class App
                 startTime = System.currentTimeMillis();
                 stopTime = System.currentTimeMillis();
                 
+                timeLabel.show();
                 timeLabel.setText(toTimeString(0));
                 
                 laps.clear();
