@@ -121,7 +121,7 @@ public class App
             {
                 if (running)
                 {
-                    laps.addElement(timeLabel.getText());
+                    laps.addElement(toTimeString(System.currentTimeMillis() - startTime));
                     lapTimes.setModel(laps);
                     
                     end = true;
