@@ -66,13 +66,13 @@ public class Airplane
         }
         
         if (App.and(fFlaps, 0) && App.and(fFlaps, 1))
-            throw new CrashException("Failure of flaps");
+            throw new CrashException("Failure of all flaps");
         
         if (App.and(fPilots, 0) && App.and(fPilots, 1) && App.and(fPilots, 2))
-            throw new CrashException("Failure of pilots");
+            throw new CrashException("Failure of all pilots");
         
         if ((App.and(fEngines, 1) && App.and(fEngines, 2)) && (App.and(fEngines, 0) || App.and(fEngines, 3)))
-            throw new CrashException("Failure of engines");
+            throw new CrashException("Failure of engines: " + ((App.and(fEngines, 0)) ? "1, " : "") + "2, 3" + ((App.and(fEngines, 3)) ? ", 4" : ""));
     }
     
     public int getFlapFails()
