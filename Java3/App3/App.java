@@ -17,7 +17,7 @@ public class App
 {
     private static boolean running = false, end = false;
     private static DefaultListModel laps = new DefaultListModel();
-    private static long startTime = 0, stopTime = 0;
+    private static long startTime = 0, stopTime = 0, lastLap = 0;
     
     public static void main(String[] args)
     {
@@ -121,8 +121,10 @@ public class App
             {
                 if (running)
                 {
-                    laps.addElement(toTimeString(System.currentTimeMillis() - startTime));
+                    laps.addElement(toTimeString(System.currentTimeMillis() - startTime - lastLap));
                     lapTimes.setModel(laps);
+                    
+                    lastLap = System.currentTimeMillis() - startTime;
                     
                     end = true;
                 }
