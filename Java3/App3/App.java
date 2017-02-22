@@ -33,7 +33,7 @@ public class App
         
         timeLabel.setFont(new Font(timeLabel.getFont().getName(), Font.PLAIN, 18));
         
-        Thread t = new Thread(new Runnable()
+        Thread timeThread = new Thread(new Runnable()
         {
             public void run()
             {
@@ -53,6 +53,9 @@ public class App
                         else
                             timeLabel.show();
                     }
+                    
+                    if (startTime == stopTime)
+                        timeLabel.show();
                 }
             }
         });
@@ -69,9 +72,9 @@ public class App
             {
                 if (!running)
                 {
-                    if (t.getState() == Thread.State.NEW)
+                    if (timeThread.getState() == Thread.State.NEW)
                     {
-                        t.start();
+                        timeThread.start();
                         startTime = System.currentTimeMillis();
                     }
                     else
@@ -105,6 +108,7 @@ public class App
                 
                 startTime = System.currentTimeMillis();
                 stopTime = System.currentTimeMillis();
+                lastLap = 0;
                 
                 timeLabel.show();
                 timeLabel.setText(toTimeString(0));
