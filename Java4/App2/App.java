@@ -33,9 +33,9 @@ public class App
 				women.push(student);
 		}
 		
-		/*queue.printQueue();
+		queue.printQueue();
 		list.printList();
 		men.printSortedList();
-		women.printSortedList();*/
+		women.printSortedList();
 	}
 }
