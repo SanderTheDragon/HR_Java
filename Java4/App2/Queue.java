@@ -1,44 +1,35 @@
-public class Stack
+public class Queue
 {
-	private class Element
-	{
-		private Student student;
-		private Element nextElement;
-		
-		public Student getStudent() { return student; }
-		public void setStudent(Student student) { this.student = student; }
-		
-		public Element getNextElement() { return nextElement; }
-		public void setNextElement(Element nextElement) { this.nextElement = nextElement; }
-		
-		public Element(Student student, Element nextElement)
-		{
-			setStudent(student);
-			setNextElement(nextElement);
-		}
-	}
-	
 	private Element start;
+	private Element end;
 	private int size;
 	
-	public Stack()
+	public Queue()
 	{
 		start = null;
+		end = null;
 		size = 0;
 	}
 	
 	public int size() { return size; }
 	
-	public void push(Student student)
+	public boolean push(Student student)
 	{
 		//if (this.peek(student))
-		//	return;
+		//	return false;
 		
-		Element newElement = new Element(student, start);
+		Element newElement = new Element(student, end, null);
+		
+		if (end != null)
+			end.setPreviousElement(newElement);
+		else
+			start = newElement;
+		
+		end = newElement;
 		
 		size++;
 		
-		start = newElement;
+		return true;
 	}
 	
 	public Student pop()
@@ -48,9 +39,12 @@ public class Stack
 		
 		Element element = start;
 		
-		start = element.getNextElement();
+		start = element.getPreviousElement();
 		
-		element.setNextElement(null);
+		if (start != null)
+			start.setNextElement(null);
+		
+		element.setPreviousElement(null);
 		
 		size--;
 		
@@ -71,9 +65,9 @@ public class Stack
 		return false;
 	}
 	
-	public void printStack()
+	public void printQueue()
 	{
-		System.out.println("Stack: ");
+		System.out.println("Queue: ");
 		
 		print();
 	}
