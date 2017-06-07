@@ -21,6 +21,8 @@ public class App
 		queue.push(missPiggy);
 		queue.push(swedishChef);
 		
+		queue.printQueue();
+		
 		for (Student student = queue.pop(); student != null; student = queue.pop())
 		{
 			list.push(student, list.size());
@@ -31,9 +33,9 @@ public class App
 				women.push(student);
 		}
 		
-		queue.printQueue();
+		/*queue.printQueue();
 		list.printList();
 		men.printSortedList();
-		women.printSortedList();
+		women.printSortedList();*/
 	}
 }

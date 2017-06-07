@@ -18,12 +18,15 @@ public class Queue
 		//if (this.peek(student))
 		//	return false;
 		
-		Element newElement = new Element(student, end, null);
+		Element newElement = new Element(student, null, null);
+		
+		if (this.size() == 0)
+		{
+			start = end = newElement;
+		}
 		
 		if (end != null)
-			end.setPreviousElement(newElement);
-		else
-			start = newElement;
+			end.setNextElement(newElement);
 		
 		end = newElement;
 		
@@ -39,12 +42,12 @@ public class Queue
 		
 		Element element = start;
 		
-		start = element.getPreviousElement();
+		start = element.getNextElement();
 		
 		if (start != null)
-			start.setNextElement(null);
+			start.setPreviousElement(null);
 		
-		element.setPreviousElement(null);
+		element.setNextElement(null);
 		
 		size--;
 		
